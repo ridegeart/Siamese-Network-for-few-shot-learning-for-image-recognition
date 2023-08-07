@@ -24,7 +24,8 @@ x_geuine_pair np.zeros([total_sample_size, 2, dim1, dim2, 1],dtype=('float32'))
   -公式#1：
    ![image](https://i.stack.imgur.com/zDtA0.png)  
    來自同類別的圖片(相似)設為1，來自不同類別(不相似)的圖片設為0，  
-  -![image](https://pic3.zhimg.com/80/v2-bfa48776c69d7e2cbfcf9bc118e5e86e_720w.webp)公式#2：  
+  -公式#2：
+  ![image](https://pic3.zhimg.com/80/v2-bfa48776c69d7e2cbfcf9bc118e5e86e_720w.webp)
   最初在給圖片對做label的時候，要將來自同類別的圖片(相似)設為0，來自不同類別的圖片設為1，  
   原作者使用的是#1公式，這裡使用#2公式。  
 - Optimizer：RMS
