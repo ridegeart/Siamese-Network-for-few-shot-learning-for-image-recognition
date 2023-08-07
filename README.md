@@ -38,4 +38,7 @@ x_geuine_pair np.zeros([total_sample_size, 2, dim1, dim2, 1],dtype=('float32'))
   3) labels[predictions.ravel() < 0.5]：使用boolean矩陣作為索引，當索引為True，返回labels對應索引處的元素，即返回神經網路認為(預測)為同類別的圖片。   
   4) 有可能predictions認為是True(特徵距離小，來自同類圖片)，但實際上labels為0(來自不同類圖片)，因為這裡設定來自同類別的圖片為1，因此可以直接加總labels[predictions.ravel() < 0.5]的值並做mean來得到準確值  
   - contrastive_loss使用 #2 公式：  
-則來自同類別的圖片(相似)設為0，來自不同類別的圖片設為1，而predictions認為是True(特徵距離小，來自同類圖片)，如果預測正確的話，labels為0，所以加總labels[predictions.ravel() < 0.5]的值越小代表預測的越準確，因此加總labels[predictions.ravel() < 0.5]，實際上是在計算"1"的個數，也就是在計算預測的錯誤率。這裡如果要算預測準確率的話，使用1-compute_accuracy(pred, y_test)(錯誤率) 來得到。  
+  1) 來自同類別的圖片(相似)設為0，來自不同類別的圖片設為1。
+  2) predictions認為是True(特徵距離小，來自同類圖片)，如果預測正確的話，labels為0，所以加總labels[predictions.ravel() < 0.5]的值越小代表預測的越準確。
+  3) 加總labels[predictions.ravel() < 0.5]，實際上是在計算"1"的個數，也就是在計算預測的錯誤率。
+  4) 計算預測準確率：使用1-compute_accuracy(pred, y_test)(錯誤率)。  
